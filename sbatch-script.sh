@@ -24,7 +24,7 @@ MODEL_FILE="/data/sciencesupport/tf-dna-predictions/models/${PROTEIN}-bestSVR.mo
 OUTPUT_FILE="/data/sciencesupport/tf-dna-predictions/results/${GENOME}-${PROTEIN}-${CHROM}-${CORE}-predictions.bed"
 
 PYTHONPATH=/home/dcl9/libsvm/libsvm-321/python \
-  python /home/dcl9/SVR_models/predict_genome.py \
+  srun python /home/dcl9/SVR_models/predict_genome.py \
   -g $GENOME_FILE \
   -m $MODEL_FILE \
   --chroms $CHROM \
