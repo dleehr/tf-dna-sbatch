@@ -127,7 +127,9 @@ command = ['python', 'predict_genome.py',
 command.extend(kmers_list)
 command.extend(['-o', output_file])
 
-if not os.path.exists(output_dir):
+try:
    os.makedirs(output_dir)
+except OSError as e:
+   pass # Tried to check if not exists first, but when we schedule multiple simultaneous jobs, it fails.
 print ' '.join(command)
 
