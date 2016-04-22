@@ -123,8 +123,9 @@ output_file = '{}/{}_{}_predictions.bed'.format(output_dir, model_filename, chro
 command = ['python', 'predict_genome.py', 
            '-g', genome_file, '--chroms', chrom, 
            '-m', model_file, '-c', core, 
-           '-w', str(width), '-k', ','.join(str(kmers_list)),
-           '-o', output_file])]
+           '-w', str(width), '-k']
+command.extend(kmers_list)
+command.extend(['-o', output_file])
 
 if not os.path.exists(output_dir):
    os.makedirs(output_dir)
