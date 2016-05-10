@@ -46,7 +46,7 @@ def write_yaml(file_name):
             track_filename = '{}-{}-{}-{}.bb'.format(assembly, serial_number, protein, model_filename)
             width = model[2]
             cores = [model[3]]
-            kmers = list(model[4]) # make a new list to force yaml not to create a reference
+            kmers = [int(x) for x in model[4]]
             slope_intercept = False
             metadata = make_metadata_dict(assembly, track_filename, model_filename, author_identifier, serial_number, filter_threshold, protein, cores, kmers, width, slope_intercept)
             metadata_dicts.append(metadata)
