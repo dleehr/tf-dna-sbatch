@@ -1,6 +1,6 @@
 import predict_genome_wrapper as pgw
 from generate_json_jobs import FILTER_THRESHOLDS
-import json
+import yaml
 
 def make_metadata_dict(assembly, track_filename, model_filename, author_identifier, serial_number, filter_threshold, protein, cores, kmers, width, slope_intercept):
     m = dict()
@@ -18,7 +18,7 @@ def make_metadata_dict(assembly, track_filename, model_filename, author_identifi
     return m
 
 
-def main():
+def write_yaml(file_name):
     metadata_dicts = []
     for assembly in pgw.genomes:
         model_number = 1
@@ -46,15 +46,16 @@ def main():
             track_filename = '{}-{}-{}-{}.bb'.format(assembly, serial_number, protein, model_filename)
             width = model[2]
             cores = [model[3]]
-            kmers = model[4]
+            kmers = list(model[4]) # make a new list to force yaml not to create a reference
             slope_intercept = False
             metadata = make_metadata_dict(assembly, track_filename, model_filename, author_identifier, serial_number, filter_threshold, protein, cores, kmers, width, slope_intercept)
             metadata_dicts.append(metadata)
             model_number += 1
-    print json.dumps(metadata_dicts, indent=2)
+    with open(file_name, 'w') as f:
+        f.write( yaml.dump(metadata_dicts, default_flow_style=False) )
 
 if __name__ == '__main__':
-    main()
+    write_yaml('tracks.yaml')
 
 
 
