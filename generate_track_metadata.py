@@ -25,8 +25,10 @@ def write_yaml(file_name):
         # Tracks from JS
         for protein in ['E2F1', 'E2F4']:
             serial_number = '{0:04d}'.format(model_number)
-            track_filename = '{}-{}_binding_site.bb'.format(protein, assembly)
+            # E2F1-bestSVR.model.bb
             model_filename = '{}-bestSVR.model'.format(protein)
+            # hg38-0001-E2F1-E2F1-bestSVR.model.bb
+            track_filename = '{}-{}-{}-{}.bb'.format(assembly, serial_number, protein, model_filename)
             author_identifier = 'JS'
             filter_threshold = 0.207
             cores = ['CCGC','GCGC','GCGG']
