@@ -30,6 +30,7 @@ bHLH/HisMycMax_Bound_filtered_normalized_transformed_20bp_CATGCG_1a2a3mer_format
 
 # Functions to parsae the model file names
 def parse_e2f(f):
+    f = f.split('/')[1]
     components = f.split('_')
     protein = components[0]
     width = components[5][:2]
@@ -38,14 +39,16 @@ def parse_e2f(f):
     return [protein, width, core, kmers, False]
 
 def parse_elkets(f):
+    f = f.split('/')[1]
     components = f.split('_')
     protein = components[0]
     width = 36
-    core = components[5]
-    kmers = components[6].replace('mer','').split('a')
+    core = components[7]
+    kmers = components[8].replace('mer','').split('a')
     return [protein, width, core, kmers, True]
 
 def parse_hismadmax(f):
+    f = f.split('/')[1]
     components = f.split('_')
     protein = components[0]
     width = 36
