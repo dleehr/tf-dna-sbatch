@@ -2,7 +2,7 @@
 #
 #SBATCH --mail-user=dan.leehr@duke.edu
 #SBATCH --mail-type=FAIL
-#SBATCH --array=288-383
+#SBATCH --array=192-383
 #SBATCH --cpu=1
 #SBATCH --mem=16g
 
