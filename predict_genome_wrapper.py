@@ -29,14 +29,14 @@ HisMycMax_Bound_filtered_normalized_CACGTG_1a2a3mer_format.model
 HisMycMax_Bound_filtered_normalized_CATGCG_1a2a3mer_format.model
 '''
 
-# Functions to parsae the modle file names
+# Functions to parsae the model file names
 def parse_e2f(f):
     components = f.split('_')
     protein = components[0]
     width = components[5][:2]
     core = components[6]
     kmers = components[7].replace('mer','').split('a')
-    return [protein, width, core, kmers]
+    return [protein, width, core, kmers, False]
 
 def parse_elkets(f):
     components = f.split('_')
@@ -44,7 +44,7 @@ def parse_elkets(f):
     width = 36
     core = components[5]
     kmers = components[6].replace('mer','').split('a')
-    return [protein, width, core, kmers]
+    return [protein, width, core, kmers, True]
 
 def parse_hismadmax(f):
     components = f.split('_')
@@ -52,7 +52,7 @@ def parse_hismadmax(f):
     width = 36
     core = components[4]
     kmers = components[5].replace('mer','').split('a')
-    return [protein, width, core, kmers]
+    return [protein, width, core, kmers, True]
 
 
 models = list()
@@ -84,25 +84,27 @@ def output_dir_name(output_base, assembly, protein):
     return '{}/{}/{}'.format(output_base, assembly, protein)
 
 if __name__ == '__main__':
-    combinations = [x for x in itertools.product(genomes, chroms, models)]
+    combinations = [x for x in itertools.product(models, genomes, chroms)]
 
     idx = int(sys.argv[1])
     vals = combinations[idx]
 
-    assembly = vals[0]
-    chrom = vals[1]
-    params = vals[2]
+    params = vals[0]
+    assembly = vals[1]
+    chrom = vals[2]
 
     model_filename = params[0]
     protein = params[1]
     width = params[2]
     core = params[3]
     kmers_list = params[4]
+    transform = params[5]
+
 
     # predict_genome.py
     #usage: predict_genome.py [-h] -g GenomeFile [--chroms [Chroms [Chroms ...]]]
     #                         -m ModelFile -c Core -w Width -k Kmers [Kmers ...]
-    #                         [-i] -o OutputFile
+    #                         [-i] [-t] -o OutputFile
 
     genome_file = '{}/{}.fa'.format(genome_files_dir, assembly)
     model_file = '{}/{}'.format(model_files_dir, model_filename)
@@ -118,11 +120,14 @@ if __name__ == '__main__':
                '-m', model_file, '-c', core,
                '-w', str(width), '-k']
     command.extend(kmers_list)
+    if transform:
+      command.append('-t')
+
     command.extend(['-o', output_file])
 
     try:
-       os.makedirs(output_dir)
+      os.makedirs(output_dir)
     except OSError as e:
-       pass # Tried to check if not exists first, but when we schedule multiple simultaneous jobs, it fails.
+      pass # Tried to check if not exists first, but when we schedule multiple simultaneous jobs, it fails.
     print ' '.join(command)
 
