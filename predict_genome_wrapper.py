@@ -28,21 +28,24 @@ bHLH/HisMycMax_Bound_filtered_normalized_transformed_20bp_CACGCG_1a2a3mer_format
 bHLH/HisMycMax_Bound_filtered_normalized_transformed_20bp_CACGTG_1a2a3mer_format.model
 bHLH/HisMycMax_Bound_filtered_normalized_transformed_20bp_CATGCG_1a2a3mer_format.model'''
 
+def extract_width_int(width_string):
+    return int(''.join([x for x in width_string if x.isdigit()]))
+
 # Functions to parsae the model file names
 def parse_e2f(f):
     f = f.split('/')[1]
     components = f.split('_')
     protein = components[0]
-    width = components[5][:2]
-    core = components[6]
-    kmers = components[7].replace('mer','').split('a')
+    width = extract_width_int(components[7])
+    core = components[8]
+    kmers = components[9].replace('mer','').split('a')
     return [protein, width, core, kmers, False]
 
 def parse_elkets(f):
     f = f.split('/')[1]
     components = f.split('_')
     protein = components[0]
-    width = 36
+    width = extract_width_int(components[6])
     core = components[7]
     kmers = components[8].replace('mer','').split('a')
     return [protein, width, core, kmers, True]
@@ -51,9 +54,9 @@ def parse_hismadmax(f):
     f = f.split('/')[1]
     components = f.split('_')
     protein = components[0]
-    width = 36
-    core = components[4]
-    kmers = components[5].replace('mer','').split('a')
+    width = extract_width_int(components[5])
+    core = components[6]
+    kmers = components[7].replace('mer','').split('a')
     return [protein, width, core, kmers, True]
 
 
@@ -111,7 +114,7 @@ if __name__ == '__main__':
     genome_file = '{}/{}.fa'.format(genome_files_dir, assembly)
     model_file = '{}/{}'.format(model_files_dir, model_filename)
     output_dir = output_dir_name(output_base, assembly, protein)
-    output_file = output_file_name(output_dir, model_filename, chrom)
+    output_file = output_file_name(output_dir, os.path.basename(model_filename), chrom)
 
     # core set earlier
     # width set earlier
