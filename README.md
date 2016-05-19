@@ -37,23 +37,24 @@ hg19 from http://hgdownload.cse.ucsc.edu/goldenPath/hg19/bigZips/hg19.2bit and c
         e7a85675d7d025d65529c00f1468a534  E2F1-bestSVR.model
         583cc424e209f9d8eef38ef396bcbed7  E2F4-bestSVR.model
 
-- /data/sciencesupport/tf-dna-predictions/models/Ning/TF_general/SVR:
+- /data/sciencesupport/tf-dna-predictions/models/Ning/TF\_general/SVR/model\_files\_final:
 
-        dde303bd999160e7c144f1d733aeb9be  E2F1_250nM_Bound_filtered_normalized_34bp_GCGC_1a2a3mer_format.model
-        5279cf828d91ec341407a47439a2f1f3  E2F1_250nM_Bound_filtered_normalized_34bp_GCGG_1a2a3mer_format.model
-        7d311b8f1a5640d9d4bfb35fe7bb502c  E2F4_500nM_Bound_filtered_normalized_34bp_GCGC_1a2a3mer_format.model
-        604d2751ea8aa5005267495ffd83ed22  E2F4_500nM_Bound_filtered_normalized_34bp_GCGG_1a2a3mer_format.model
-        61cef674ba4a1d3118f23fcc761c6bdc  ELK1_100nM_Bound_filtered_normalized_GGAA_1a2a3mer_format.model
-        0c43ba23c50d5dd4adfd2f31cd48d76e  ELK1_100nM_Bound_filtered_normalized_GGAT_1a2a3mer_format.model
-        7e44110f0af2795fcf873b893ef4f5de  ETS1_100nM_Bound_filtered_normalized_GGAA_1a2a3mer_format.model
-        b72cc895cb029a92cb64f81817630ce0  ETS1_100nM_Bound_filtered_normalized_GGAT_1a2a3mer_format.model
-        5065ab68bc797c739c03937fd6dc2a18  HisMadMax_Bound_filtered_normalized_CACATG_1a2a3mer_format.model
-        9e6781737c571fd63c38652703c6b946  HisMadMax_Bound_filtered_normalized_CACGAG_1a2a3mer_format.model
-        b9622ed777116eaa7576f24fe823818b  HisMadMax_Bound_filtered_normalized_CACGCG_1a2a3mer_format.model
-        09870d48a598e4baf925682c261990fe  HisMadMax_Bound_filtered_normalized_CACGTG_1a2a3mer_format.model
-        8aeb792f2e372757e1b574f4445b3bcd  HisMadMax_Bound_filtered_normalized_CATGCG_1a2a3mer_format.model
-        b98904979b198715885f219acc49cdf4  HisMycMax_Bound_filtered_normalized_CACATG_1a2a3mer_format.model
-        0732afafe91e5e4bc024f3ae81225e7b  HisMycMax_Bound_filtered_normalized_CACGAG_1a2a3mer_format.model
-        af05caa20f11bb99518990a68f15bec7  HisMycMax_Bound_filtered_normalized_CACGCG_1a2a3mer_format.model
-        cd0bd0dc0126906890073fc99c83b122  HisMycMax_Bound_filtered_normalized_CACGTG_1a2a3mer_format.model
-        528829885dc92c630e736d13aad9f42e  HisMycMax_Bound_filtered_normalized_CATGCG_1a2a3mer_format.model
+        0fb3b1167caef14dbb2f14dd8d3bba8e  bHLH/HisMadMax_Bound_filtered_normalized_transformed_20bp_CACATG_1a2a3mer_format.model
+        ec406cc079a00941d905977a50e9e10a  bHLH/HisMadMax_Bound_filtered_normalized_transformed_20bp_CACGAG_1a2a3mer_format.model
+        74323f39f91b998d838d6afb045a5a5b  bHLH/HisMadMax_Bound_filtered_normalized_transformed_20bp_CACGCG_1a2a3mer_format.model
+        569fb2cb8cdb922b315f64b231c95347  bHLH/HisMadMax_Bound_filtered_normalized_transformed_20bp_CACGTG_1a2a3mer_format.model
+        aff3b40f2b0106288437b2ffe4a41b10  bHLH/HisMadMax_Bound_filtered_normalized_transformed_20bp_CATGCG_1a2a3mer_format.model
+        0f3fd0207dde818e912bb2bcafc27593  bHLH/HisMycMax_Bound_filtered_normalized_transformed_20bp_CACATG_1a2a3mer_format.model
+        fb67344a71eb5002a8d48cb7efbde3bb  bHLH/HisMycMax_Bound_filtered_normalized_transformed_20bp_CACGAG_1a2a3mer_format.model
+        fb84ded0f4f8bc6fc32af68a61722bfa  bHLH/HisMycMax_Bound_filtered_normalized_transformed_20bp_CACGCG_1a2a3mer_format.model
+        71beb6f70ea673c9324d76a26826ce33  bHLH/HisMycMax_Bound_filtered_normalized_transformed_20bp_CACGTG_1a2a3mer_format.model
+        a42626bc99f00b1d2579e9d1a0634ccb  bHLH/HisMycMax_Bound_filtered_normalized_transformed_20bp_CATGCG_1a2a3mer_format.model
+        d9eedb3eec8e8168b791af1ddb7659a8  E2F/E2F1_250nM_Bound_filtered_normalized_logistic_transformed_20bp_GCGC_1a2a3mer_format.model
+        910ebc067a7516e9fc67d08275f315d6  E2F/E2F1_250nM_Bound_filtered_normalized_logistic_transformed_20bp_GCGG_1a2a3mer_format.model
+        960209f3c02dadca1c120ecf78b99ca3  E2F/E2F4_500nM_Bound_filtered_normalized_logistic_transformed_20bp_GCGC_1a2a3mer_format.model
+        78e9cf8178f1bca24c1e5565adbcc0fa  E2F/E2F4_500nM_Bound_filtered_normalized_logistic_transformed_20bp_GCGG_1a2a3mer_format.model
+        adbd639ed01310c3e72b17eac63c7bd5  ETS/ELK1_100nM_Bound_filtered_normalized_transformed_20bp_GGAA_1a2a3mer_format.model
+        40abc9a21ab0bba72bdf35a9dc718f47  ETS/ELK1_100nM_Bound_filtered_normalized_transformed_20bp_GGAT_1a2a3mer_format.model
+        0505da09e0a2b5704f0e02d43892cba5  ETS/ETS1_100nM_Bound_filtered_normalized_transformed_20bp_GGAA_1a2a3mer_format.model
+        d65309294602b06f746b21a40de28a20  ETS/ETS1_100nM_Bound_filtered_normalized_transformed_20bp_GGAT_1a2a3mer_format.model
+
