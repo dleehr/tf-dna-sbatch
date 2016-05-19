@@ -13,7 +13,7 @@ Below is documentation of software and data versions used.
 
 ## Software versions:
 
-- [SVR_models 1.1.0](https://github.com/Duke-GCB/SVR_models/releases/tag/1.1.0)
+- [SVR_models 1.1.1](https://github.com/Duke-GCB/SVR_models/releases/tag/1.1.1)
 - [LIBSVM 3.21](https://www.csie.ntu.edu.tw/~cjlin/libsvm/) [github](https://github.com/cjlin1/libsvm/releases/tag/v321)
 
 SVR_Models repo includes a Dockerfile for Python 2.7.11 that installs libsvm too
