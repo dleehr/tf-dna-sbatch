@@ -1,12 +1,13 @@
 import predict_genome_wrapper as pgw
+import os
 from generate_json_jobs import FILTER_THRESHOLDS
 import yaml
 
-def make_metadata_dict(assembly, track_filename, model_filename, author_identifier, serial_number, filter_threshold, protein, cores, kmers, width, slope_intercept):
+def make_metadata_dict(assembly, track_filename, model_filenames, author_identifier, serial_number, filter_threshold, protein, cores, kmers, width, slope_intercept):
     m = dict()
     m['assembly'] = assembly
     m['track_filename'] = track_filename
-    m['model_filename'] = model_filename
+    m['model_filenames'] = model_filenames
     m['author_identifier'] = author_identifier
     m['serial_number'] = serial_number
     m['filter_threshold'] = filter_threshold
@@ -35,22 +36,24 @@ def write_yaml(file_name):
             kmers = [3]
             width = 36
             slope_intercept = True
-            metadata = make_metadata_dict(assembly, track_filename, model_filename, author_identifier, serial_number, filter_threshold, protein, cores, kmers, width, slope_intercept)
+            metadata = make_metadata_dict(assembly, track_filename, [model_filename], author_identifier, serial_number, filter_threshold, protein, cores, kmers, width, slope_intercept)
             metadata_dicts.append(metadata)
             model_number += 1
-        # Tracks from NS - one track per model. Protein, core, width, kmers encoded in the model filename
-        for model in pgw.models:
+        # Tracks from NS - one track per protein. Protein, core, width, kmers encoded in the model filename
+        proteins = sorted(list(set([model[1] for model in pgw.models])))
+        for protein in proteins:
+            # One set of input files per model
             serial_number = '{0:04d}'.format(model_number)
-            model_filename = model[0]
+            models = [model for model in pgw.models if model[1] == protein]
+            model_filenames = [os.path.basename(model[0]) for model in models]
             author_identifier = 'NS'
-            protein = model[1]
             filter_threshold = FILTER_THRESHOLDS[protein]
-            track_filename = '{}-{}-{}-{}.bb'.format(assembly, serial_number, protein, model_filename)
-            width = model[2]
-            cores = [model[3]]
-            kmers = [int(x) for x in model[4]]
+            track_filename = '{}-{}-{}.bb'.format(assembly, serial_number, protein)
+            width = int(model[2])
+            cores = [model[3] for model in models]
+            kmers = [int(x) for x in models[0][4]] #kmers must be consistent for all models on a protein
             slope_intercept = False
-            metadata = make_metadata_dict(assembly, track_filename, model_filename, author_identifier, serial_number, filter_threshold, protein, cores, kmers, width, slope_intercept)
+            metadata = make_metadata_dict(assembly, track_filename, model_filenames, author_identifier, serial_number, filter_threshold, protein, cores, kmers, width, slope_intercept)
             metadata_dicts.append(metadata)
             model_number += 1
     with open(file_name, 'w') as f:
