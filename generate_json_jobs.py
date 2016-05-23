@@ -25,33 +25,37 @@ def make_job_dict(input_file_paths, filter_threshold, resize_width, assembly, in
     return job
 
 
-def main(start_model_number):
+def main(start_protein_number):
     for assembly in pgw.genomes:
-        model_number = start_model_number
-        for model in pgw.models:
-            formatted_model_number = '{0:04d}'.format(model_number)
-            model_filename = model[0]
-            base_model_filename = os.path.splitext(model_filename)[0]
-            protein = model[1]
+        protein_number = start_protein_number
+        proteins = sorted(list(set([model[1] for model in pgw.models])))
+        for protein in proteins:
+            # One set of input files per model
+            formatted_protein_number = '{0:04d}'.format(protein_number)
             input_file_paths = list()
-            output_dir = pgw.output_dir_name(pgw.output_base, assembly, protein)
-            for chrom in pgw.chroms:
-                input_file_paths.append(pgw.output_file_name(output_dir, model_filename, chrom))
+            models = [model for model in pgw.models if model[1] == protein]
+            for model in models:
+                model_filename = model[0]
+                base_model_filename = os.path.splitext(model_filename)[0]
+                output_dir = pgw.output_dir_name(pgw.output_base, assembly, protein)
+                for chrom in pgw.chroms:
+                    input_file_paths.append(pgw.output_file_name(output_dir, os.path.basename(model_filename), chrom))
             # Now we have a list of source filenames
             filter_threshold = FILTER_THRESHOLDS[protein]
             resize_width = 36
-            intermediate_output_file_name = '{}-{}-{}.bed'.format(assembly, formatted_model_number, protein)
-            output_bigbed_file_name = '{}-{}-{}-{}.bb'.format(assembly, formatted_model_number, protein, model_filename)
-            job_file_name = os.path.splitext(intermediate_output_file_name)[0] + '.json'
+            intermediate_output_file_name = '{}-{}-{}.bed'.format(assembly, formatted_protein_number, protein)
+            output_bigbed_file_name = '{}-{}-{}.bb'.format(assembly, formatted_protein_number, protein)
+            job_file_name = 'json-jobs/' + os.path.splitext(intermediate_output_file_name)[0] + '.json'
             job_dict = make_job_dict(input_file_paths, filter_threshold, resize_width, assembly, intermediate_output_file_name, output_bigbed_file_name)
+            print 'writing to ', job_file_name
             with open(job_file_name, 'w') as f:
                 json.dump(job_dict, f, indent=2)
-            model_number += 1
+            protein_number += 1
 
 
 if __name__ == '__main__':
-    model_number = 3
-    main(model_number)
+    protein_number = 3
+    main(protein_number)
 
 
 
