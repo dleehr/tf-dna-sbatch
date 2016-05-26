@@ -2,7 +2,7 @@
   "assembly": "hg19", 
   "output_bigbed_file_name": "hg19-0008-HisMycMax.bb", 
   "filter_threshold": 0.1619, 
-  "resize_width": 36, 
+  "resize_width": 20, 
   "intermediate_output_file_name": "hg19-0008-HisMycMax.bed", 
   "input_files": [
     {

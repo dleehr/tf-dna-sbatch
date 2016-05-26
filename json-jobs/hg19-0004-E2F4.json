@@ -2,7 +2,7 @@
   "assembly": "hg19", 
   "output_bigbed_file_name": "hg19-0004-E2F4.bb", 
   "filter_threshold": 0.162, 
-  "resize_width": 36, 
+  "resize_width": 20, 
   "intermediate_output_file_name": "hg19-0004-E2F4.bed", 
   "input_files": [
     {

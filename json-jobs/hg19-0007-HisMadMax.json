@@ -2,7 +2,7 @@
   "assembly": "hg19", 
   "output_bigbed_file_name": "hg19-0007-HisMadMax.bb", 
   "filter_threshold": 0.1837, 
-  "resize_width": 36, 
+  "resize_width": 20, 
   "intermediate_output_file_name": "hg19-0007-HisMadMax.bed", 
   "input_files": [
     {

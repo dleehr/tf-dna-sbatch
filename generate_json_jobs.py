@@ -42,7 +42,7 @@ def main(start_protein_number):
                     input_file_paths.append(pgw.output_file_name(output_dir, os.path.basename(model_filename), chrom))
             # Now we have a list of source filenames
             filter_threshold = FILTER_THRESHOLDS[protein]
-            resize_width = 36
+            resize_width = int(model[2])
             intermediate_output_file_name = '{}-{}-{}.bed'.format(assembly, formatted_protein_number, protein)
             output_bigbed_file_name = '{}-{}-{}.bb'.format(assembly, formatted_protein_number, protein)
             job_file_name = 'json-jobs/' + os.path.splitext(intermediate_output_file_name)[0] + '.json'
