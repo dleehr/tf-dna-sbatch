@@ -11,14 +11,13 @@ FILTER_THRESHOLDS = {
   'E2F4': 0.1620,
 }
 
-def make_job_dict(input_file_paths, filter_threshold, resize_width, assembly, intermediate_output_file_name, output_bigbed_file_name):
+def make_job_dict(input_file_paths, filter_threshold, assembly, intermediate_output_file_name, output_bigbed_file_name):
     job = dict()
     input_files = list()
     for path in input_file_paths:
         input_files.append({'class':'File', 'path': path})
     job['input_files'] = input_files
     job['filter_threshold'] = filter_threshold
-    job['resize_width'] = resize_width
     job['assembly'] = assembly
     job['intermediate_output_file_name'] = intermediate_output_file_name
     job['output_bigbed_file_name'] = output_bigbed_file_name
@@ -42,11 +41,10 @@ def main(start_protein_number):
                     input_file_paths.append(pgw.output_file_name(output_dir, os.path.basename(model_filename), chrom))
             # Now we have a list of source filenames
             filter_threshold = FILTER_THRESHOLDS[protein]
-            resize_width = int(model[2])
             intermediate_output_file_name = '{}-{}-{}.bed'.format(assembly, formatted_protein_number, protein)
             output_bigbed_file_name = '{}-{}-{}.bb'.format(assembly, formatted_protein_number, protein)
             job_file_name = 'json-jobs/' + os.path.splitext(intermediate_output_file_name)[0] + '.json'
-            job_dict = make_job_dict(input_file_paths, filter_threshold, resize_width, assembly, intermediate_output_file_name, output_bigbed_file_name)
+            job_dict = make_job_dict(input_file_paths, filter_threshold, assembly, intermediate_output_file_name, output_bigbed_file_name)
             print 'writing to ', job_file_name
             with open(job_file_name, 'w') as f:
                 json.dump(job_dict, f, indent=2)
