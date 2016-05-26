@@ -39,7 +39,7 @@ def parse_e2f(f):
     width = extract_width_int(components[7])
     core = components[8]
     kmers = components[9].replace('mer','').split('a')
-    return [protein, width, core, kmers, False]
+    return [protein, width, core, kmers, True]
 
 def parse_elkets(f):
     f = f.split('/')[1]
