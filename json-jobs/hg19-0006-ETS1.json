@@ -1,9 +1,8 @@
 {
-  "assembly": "hg19", 
   "output_bigbed_file_name": "hg19-0006-ETS1.bb", 
-  "filter_threshold": 0.2128, 
-  "resize_width": 20, 
+  "assembly": "hg19", 
   "intermediate_output_file_name": "hg19-0006-ETS1.bed", 
+  "filter_threshold": 0.2128, 
   "input_files": [
     {
       "path": "/data/sciencesupport/tf-dna-predictions/results/hg19/ETS1/ETS1_100nM_Bound_filtered_normalized_transformed_20bp_GGAA_1a2a3mer_format.model_chr1_predictions.bed", 

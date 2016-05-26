@@ -1,9 +1,8 @@
 {
-  "assembly": "hg19", 
   "output_bigbed_file_name": "hg19-0008-HisMycMax.bb", 
-  "filter_threshold": 0.1619, 
-  "resize_width": 20, 
+  "assembly": "hg19", 
   "intermediate_output_file_name": "hg19-0008-HisMycMax.bed", 
+  "filter_threshold": 0.1619, 
   "input_files": [
     {
       "path": "/data/sciencesupport/tf-dna-predictions/results/hg19/HisMycMax/HisMycMax_Bound_filtered_normalized_transformed_20bp_CACATG_1a2a3mer_format.model_chr1_predictions.bed", 

@@ -1,9 +1,8 @@
 {
-  "assembly": "hg38", 
   "output_bigbed_file_name": "hg38-0005-ELK1.bb", 
-  "filter_threshold": 0.2244, 
-  "resize_width": 20, 
+  "assembly": "hg38", 
   "intermediate_output_file_name": "hg38-0005-ELK1.bed", 
+  "filter_threshold": 0.2244, 
   "input_files": [
     {
       "path": "/data/sciencesupport/tf-dna-predictions/results/hg38/ELK1/ELK1_100nM_Bound_filtered_normalized_transformed_20bp_GGAA_1a2a3mer_format.model_chr1_predictions.bed", 

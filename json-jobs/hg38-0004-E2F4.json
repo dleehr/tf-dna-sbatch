@@ -1,9 +1,8 @@
 {
-  "assembly": "hg38", 
   "output_bigbed_file_name": "hg38-0004-E2F4.bb", 
-  "filter_threshold": 0.162, 
-  "resize_width": 20, 
+  "assembly": "hg38", 
   "intermediate_output_file_name": "hg38-0004-E2F4.bed", 
+  "filter_threshold": 0.162, 
   "input_files": [
     {
       "path": "/data/sciencesupport/tf-dna-predictions/results/hg38/E2F4/E2F4_500nM_Bound_filtered_normalized_logistic_transformed_20bp_GCGC_1a2a3mer_format.model_chr1_predictions.bed", 
