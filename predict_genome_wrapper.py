@@ -28,6 +28,20 @@ bHLH/HisMycMax_Bound_filtered_normalized_transformed_20bp_CACGCG_1a2a3mer_format
 bHLH/HisMycMax_Bound_filtered_normalized_transformed_20bp_CACGTG_1a2a3mer_format.model
 bHLH/HisMycMax_Bound_filtered_normalized_transformed_20bp_CATGCG_1a2a3mer_format.model'''
 
+# Models added 2016-08-02
+
+e2f3_files = '''E2F/E2F3_250nM_Bound_filtered_normalized_logistic_transformed_20bp_GCGC_1a2a3mer_format.model
+E2F/E2F3_250nM_Bound_filtered_normalized_logistic_transformed_20bp_GCGG_1a2a3mer_format.model'''
+
+gabpa_files = '''ETS/GABPA_100nM_Bound_filtered_normalized_transformed_20bp_GGAA_1a2a3mer_format.model
+ETS/GABPA_100nM_Bound_filtered_normalized_transformed_20bp_GGAT_1a2a3mer_format.model'''
+
+hismax_files = '''bHLH/HisMax_Bound_filtered_normalized_logistic_transformed_20bp_CACATG_1a2a3mer_format.model
+bHLH/HisMax_Bound_filtered_normalized_logistic_transformed_20bp_CACGAG_1a2a3mer_format.model
+bHLH/HisMax_Bound_filtered_normalized_logistic_transformed_20bp_CACGCG_1a2a3mer_format.model
+bHLH/HisMax_Bound_filtered_normalized_logistic_transformed_20bp_CACGTG_1a2a3mer_format.model
+bHLH/HisMax_Bound_filtered_normalized_logistic_transformed_20bp_CATGCG_1a2a3mer_format.model'''
+
 def extract_width_int(width_string):
     return int(''.join([x for x in width_string if x.isdigit()]))
 
@@ -59,6 +73,14 @@ def parse_hismadmax(f):
     kmers = components[7].replace('mer','').split('a')
     return [protein, width, core, kmers, True]
 
+def parse_hismax(f):
+    f = f.split('/')[1]
+    components = f.split('_')
+    protein = components[0]
+    width = extract_width_int(components[6])
+    core = components[7]
+    kmers = components[8].replace('mer','').split('a')
+    return [protein, width, core, kmers, True]
 
 models = list()
 for f in e2f_files.splitlines():
@@ -67,9 +89,13 @@ for f in elkets_files.splitlines():
     models.append([f] + parse_elkets(f))
 for f in hismadmax_files.splitlines():
     models.append([f] + parse_hismadmax(f))
-
-
-# In[42]:
+# Adding models 2016-08-02
+for f in e2f3_files.splitlines():
+    models.append([f] + parse_e2f(f))
+for f in gabpa_files.splitlines():
+    models.append([f] + parse_elkets(f))
+for f in hismax_files.splitlines():
+    models.append([f] + parse_hismax(f))
 
 genomes = ['hg19', 'hg38']
 chroms = []
