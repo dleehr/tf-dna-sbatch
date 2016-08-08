@@ -131,12 +131,6 @@ if __name__ == '__main__':
     kmers_list = params[4]
     transform = params[5]
 
-
-    # predict_genome.py
-    #usage: predict_genome.py [-h] -g GenomeFile [--chroms [Chroms [Chroms ...]]]
-    #                         -m ModelFile -c Core -w Width -k Kmers [Kmers ...]
-    #                         [-i] [-t] -o OutputFile
-
     genome_file = '{}/{}.fa'.format(genome_files_dir, assembly)
     model_file = '{}/{}'.format(model_files_dir, model_filename)
     output_dir = output_dir_name(output_base, assembly, protein)
@@ -145,8 +139,8 @@ if __name__ == '__main__':
     # core set earlier
     # width set earlier
 
-    # predict_genome
-    command = ['python', 'predict_genome.py',
+    # predict_tf_binding
+    command = ['python', 'predict_tf_binding.py',
                '-g', genome_file, '--chroms', chrom,
                '-m', model_file, '-c', core,
                '-w', str(width), '-k']
