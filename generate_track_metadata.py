@@ -1,6 +1,6 @@
 import predict_genome_wrapper as pgw
 import os
-from generate_json_jobs import FILTER_THRESHOLDS
+from generate_json_jobs import FILTER_THRESHOLDS, ORDERED_PROTEINS
 import yaml
 
 def make_metadata_dict(assembly, track_filename, model_filenames, author_identifier, serial_number, filter_threshold, protein, cores, kmers, width, slope_intercept):
@@ -40,8 +40,7 @@ def write_yaml(file_name):
             metadata_dicts.append(metadata)
             model_number += 1
         # Tracks from NS - one track per protein. Protein, core, width, kmers encoded in the model filename
-        proteins = sorted(list(set([model[1] for model in pgw.models])))
-        for protein in proteins:
+        for protein in ORDERED_PROTEINS:
             # One set of input files per model
             serial_number = '{0:04d}'.format(model_number)
             models = [model for model in pgw.models if model[1] == protein]
