@@ -2,14 +2,19 @@ import predict_genome_wrapper as pgw
 import os
 import json
 
-FILTER_THRESHOLDS = {
-  'HisMycMax': 0.1619,
-  'HisMadMax': 0.1837,
-  'ETS1': 0.2128,
-  'ELK1': 0.2244,
-  'E2F1': 0.1933,
-  'E2F4': 0.1620,
-}
+ORDERED_PROTEINS_THRESHOLDS = [
+  {'protein':'E2F1', 'filter_threshold': 0.1933},
+  {'protein':'E2F4', 'filter_threshold': 0.1620},
+  {'protein':'ELK1', 'filter_threshold': 0.2244},
+  {'protein':'ETS1', 'filter_threshold': 0.2128},
+  {'protein':'HisMadMax', 'filter_threshold': 0.1837},
+  {'protein':'HisMycMax', 'filter_threshold': 0.1619},
+  {'protein':'E2F3', 'filter_threshold': 0.2762},
+  {'protein':'GABPA', 'filter_threshold': 0.2888},
+  {'protein':'HisMax', 'filter_threshold': 0.2386},
+]
+ORDERED_PROTEINS = [x['protein'] for x in ORDERED_PROTEINS_THRESHOLDS ]
+FILTER_THRESHOLDS = { x['protein']: x['filter_threshold'] for x in ORDERED_PROTEINS_THRESHOLDS }
 
 def make_job_dict(input_file_paths, filter_threshold, assembly, intermediate_output_file_name, output_bigbed_file_name):
     job = dict()
@@ -27,8 +32,7 @@ def make_job_dict(input_file_paths, filter_threshold, assembly, intermediate_out
 def main(start_protein_number):
     for assembly in pgw.genomes:
         protein_number = start_protein_number
-        proteins = sorted(list(set([model[1] for model in pgw.models])))
-        for protein in proteins:
+        for protein in ORDERED_PROTEINS:
             # One set of input files per model
             formatted_protein_number = '{0:04d}'.format(protein_number)
             input_file_paths = list()
