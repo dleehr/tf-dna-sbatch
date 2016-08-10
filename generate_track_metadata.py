@@ -3,10 +3,11 @@ import os
 from generate_json_jobs import FILTER_THRESHOLDS, ORDERED_PROTEINS
 import yaml
 
-def make_metadata_dict(assembly, track_filename, model_filenames, author_identifier, serial_number, filter_threshold, protein, cores, kmers, width, slope_intercept):
+def make_metadata_dict(assembly, track_filename, track_name, model_filenames, author_identifier, serial_number, filter_threshold, protein, cores, kmers, width, slope_intercept):
     m = dict()
     m['assembly'] = assembly
     m['track_filename'] = track_filename
+    m['track_name'] = track_name
     m['model_filenames'] = model_filenames
     m['author_identifier'] = author_identifier
     m['serial_number'] = serial_number
@@ -36,7 +37,8 @@ def write_yaml(file_name):
             kmers = [3]
             width = 36
             slope_intercept = True
-            metadata = make_metadata_dict(assembly, track_filename, [model_filename], author_identifier, serial_number, filter_threshold, protein, cores, kmers, width, slope_intercept)
+            track_name = '{}_{}({})'.format(protein, serial_number, author_identifier)
+            metadata = make_metadata_dict(assembly, track_filename, track_name, [model_filename], author_identifier, serial_number, filter_threshold, protein, cores, kmers, width, slope_intercept)
             metadata_dicts.append(metadata)
             model_number += 1
         # Tracks from NS - one track per protein. Protein, core, width, kmers encoded in the model filename
@@ -48,11 +50,12 @@ def write_yaml(file_name):
             author_identifier = 'NS'
             filter_threshold = FILTER_THRESHOLDS[protein]
             track_filename = '{}-{}-{}.bb'.format(assembly, serial_number, protein)
+            track_name = '{}_{}({})'.format(protein, serial_number, author_identifier)
             width = int(model[2])
             cores = [model[3] for model in models]
             kmers = [int(x) for x in models[0][4]] #kmers must be consistent for all models on a protein
             slope_intercept = False
-            metadata = make_metadata_dict(assembly, track_filename, model_filenames, author_identifier, serial_number, filter_threshold, protein, cores, kmers, width, slope_intercept)
+            metadata = make_metadata_dict(assembly, track_filename, track_name,  model_filenames, author_identifier, serial_number, filter_threshold, protein, cores, kmers, width, slope_intercept)
             metadata_dicts.append(metadata)
             model_number += 1
     with open(file_name, 'w') as f:
