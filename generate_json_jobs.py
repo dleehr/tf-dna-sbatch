@@ -12,7 +12,10 @@ ORDERED_PROTEINS_THRESHOLDS = [
   {'protein':'E2F3', 'filter_threshold': 0.2762},
   {'protein':'GABPA', 'filter_threshold': 0.2888},
   {'protein':'HisMax', 'filter_threshold': 0.2386},
+  {'protein':'Runx1', 'filter_threshold': 0.3061},
+  {'protein':'Runx2', 'filter_threshold': 0.2711},
 ]
+
 ORDERED_PROTEINS = [x['protein'] for x in ORDERED_PROTEINS_THRESHOLDS ]
 FILTER_THRESHOLDS = { x['protein']: x['filter_threshold'] for x in ORDERED_PROTEINS_THRESHOLDS }
 
