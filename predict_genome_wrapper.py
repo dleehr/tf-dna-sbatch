@@ -42,6 +42,23 @@ bHLH/HisMax_Bound_filtered_normalized_logistic_transformed_20bp_CACGCG_1a2a3mer_
 bHLH/HisMax_Bound_filtered_normalized_logistic_transformed_20bp_CACGTG_1a2a3mer_format.model
 bHLH/HisMax_Bound_filtered_normalized_logistic_transformed_20bp_CATGCG_1a2a3mer_format.model'''
 
+# Models added 2016-09-02
+
+runx_files = '''RUNX/Runx1_10nM_Bound_filtered_normalized_logistic_transformed_20bp_GAGGT_1a2a3mer_format.model
+RUNX/Runx1_10nM_Bound_filtered_normalized_logistic_transformed_20bp_GCGGC_1a2a3mer_format.model
+RUNX/Runx1_10nM_Bound_filtered_normalized_logistic_transformed_20bp_GCGGG_1a2a3mer_format.model
+RUNX/Runx1_10nM_Bound_filtered_normalized_logistic_transformed_20bp_GCGGT_1a2a3mer_format.model
+RUNX/Runx1_10nM_Bound_filtered_normalized_logistic_transformed_20bp_GTGGC_1a2a3mer_format.model
+RUNX/Runx1_10nM_Bound_filtered_normalized_logistic_transformed_20bp_GTGGG_1a2a3mer_format.model
+RUNX/Runx1_10nM_Bound_filtered_normalized_logistic_transformed_20bp_GTGGT_1a2a3mer_format.model
+RUNX/Runx2_10nM_Bound_filtered_normalized_logistic_transformed_20bp_GAGGT_1a2a3mer_format.model
+RUNX/Runx2_10nM_Bound_filtered_normalized_logistic_transformed_20bp_GCGGC_1a2a3mer_format.model
+RUNX/Runx2_10nM_Bound_filtered_normalized_logistic_transformed_20bp_GCGGG_1a2a3mer_format.model
+RUNX/Runx2_10nM_Bound_filtered_normalized_logistic_transformed_20bp_GCGGT_1a2a3mer_format.model
+RUNX/Runx2_10nM_Bound_filtered_normalized_logistic_transformed_20bp_GTGGC_1a2a3mer_format.model
+RUNX/Runx2_10nM_Bound_filtered_normalized_logistic_transformed_20bp_GTGGG_1a2a3mer_format.model
+RUNX/Runx2_10nM_Bound_filtered_normalized_logistic_transformed_20bp_GTGGT_1a2a3mer_format.model'''
+
 def extract_width_int(width_string):
     return int(''.join([x for x in width_string if x.isdigit()]))
 
@@ -82,6 +99,15 @@ def parse_hismax(f):
     kmers = components[8].replace('mer','').split('a')
     return [protein, width, core, kmers, True]
 
+def parse_runx(f):
+    f = f.split('/')[1]
+    components = f.split('_')
+    protein = components[0]
+    width = extract_width_int(components[7])
+    core = components[8]
+    kmers = components[9].replace('mer','').split('a')
+    return [protein, width, core, kmers, True]
+
 models = list()
 for f in e2f_files.splitlines():
     models.append([f] + parse_e2f(f))
@@ -96,6 +122,8 @@ for f in gabpa_files.splitlines():
     models.append([f] + parse_elkets(f))
 for f in hismax_files.splitlines():
     models.append([f] + parse_hismax(f))
+for f in runx_files.splitlines():
+    models.append([f] + parse_runx(f))
 
 genomes = ['hg19', 'hg38']
 chroms = []
