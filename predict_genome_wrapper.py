@@ -144,6 +144,9 @@ def output_dir_name(output_base, assembly, protein):
 
 if __name__ == '__main__':
     combinations = [x for x in itertools.product(models, genomes, chroms)]
+    if len(sys.argv) == 1:
+        print 'Usage: {} <0-{}>'.format(sys.argv[0], len(combinations) -1)
+        sys.exit(1)
 
     idx = int(sys.argv[1])
     vals = combinations[idx]
