@@ -6,9 +6,9 @@
 #SBATCH --cpu=1
 #SBATCH --mem=16g
 
+module load Anaconda/2.1.0-fasrc01
 COMMAND=$(python predict_genome_wrapper.py $SLURM_ARRAY_TASK_ID)
 cd /home/dcl9/Predict-TF-Binding
 echo $COMMAND
-source /home/dcl9/Predict-TF-Binding/env/bin/activate
 PYTHONPATH=/home/dcl9/libsvm/libsvm-321/python \
   srun $COMMAND
