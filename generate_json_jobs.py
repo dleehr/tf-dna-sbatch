@@ -61,7 +61,3 @@ def main(start_protein_number):
 if __name__ == '__main__':
     protein_number = 3
     main(protein_number)
-
-
-
-
