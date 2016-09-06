@@ -22,7 +22,7 @@ def write_yaml(file_name):
             slope_intercept = True
             transform = False
             track_name = '{}_{}({})'.format(protein, serial_number, author_identifier)
-            metadata = dict(assembly=assembly, track_filename=track_filename, track_name=track_name, model_filenames=[model_filename], author_identifier=author_identifier, serial_number=serial_number, filter_threshold=filter_threshold, protein=protein, cores=cores, kmers=kmers, width=width, slope_intercept=slope_intercept, transform=transform)
+            metadata = dict(assembly=assembly, track_filename=track_filename, track_name=track_name, model_filenames=[model_filename], author_identifier=author_identifier, serial_number=serial_number, filter_threshold=filter_threshold, protein=protein, cores=cores, kmers=kmers, width=width, slope_intercept=slope_intercept, transform=transform, core_start=None)
             metadata_dicts.append(metadata)
             model_number += 1
         # Tracks from NS - one track per protein. Protein, core, width, kmers encoded in the model filename
@@ -44,7 +44,8 @@ def write_yaml(file_name):
               transform = True
             else:
               transform = False
-            metadata = dict(assembly=assembly, track_filename=track_filename, track_name=track_name, model_filenames=model_filenames, author_identifier=author_identifier, serial_number=serial_number, filter_threshold=filter_threshold, protein=protein, cores=cores, kmers=kmers, width=width, slope_intercept=slope_intercept, transform=transform)
+            core_start = model[6]
+            metadata = dict(assembly=assembly, track_filename=track_filename, track_name=track_name, model_filenames=model_filenames, author_identifier=author_identifier, serial_number=serial_number, filter_threshold=filter_threshold, protein=protein, cores=cores, kmers=kmers, width=width, slope_intercept=slope_intercept, transform=transform, core_start=core_start)
             metadata_dicts.append(metadata)
             model_number += 1
     with open(file_name, 'w') as f:
