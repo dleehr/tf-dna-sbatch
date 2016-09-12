@@ -64,50 +64,50 @@ def extract_width_int(width_string):
 
 # Functions to parsae the model file names
 def parse_e2f(f):
-    f = f.split('/')[1]
+    family, f = f.split('/')
     components = f.split('_')
     protein = components[0]
     width = extract_width_int(components[7])
     core = components[8]
     kmers = components[9].replace('mer','').split('a')
-    return [protein, width, core, kmers, True, None, 'E2F']
+    return [protein, width, core, kmers, True, None, family]
 
 def parse_elkets(f):
-    f = f.split('/')[1]
+    family, f = f.split('/')
     components = f.split('_')
     protein = components[0]
     width = extract_width_int(components[6])
     core = components[7]
     kmers = components[8].replace('mer','').split('a')
-    return [protein, width, core, kmers, True, None, 'ETS']
+    return [protein, width, core, kmers, True, None, family]
 
 def parse_hismadmax(f):
-    f = f.split('/')[1]
+    family, f = f.split('/')
     components = f.split('_')
     protein = components[0]
     width = extract_width_int(components[5])
     core = components[6]
     kmers = components[7].replace('mer','').split('a')
-    return [protein, width, core, kmers, True, None, 'bHLH']
+    return [protein, width, core, kmers, True, None, family]
 
 def parse_hismax(f):
-    f = f.split('/')[1]
+    family, f = f.split('/')
     components = f.split('_')
     protein = components[0]
     width = extract_width_int(components[6])
     core = components[7]
     kmers = components[8].replace('mer','').split('a')
-    return [protein, width, core, kmers, True, None, 'bHLH']
+    return [protein, width, core, kmers, True, None, family]
 
 def parse_runx(f):
-    f = f.split('/')[1]
+    family, f = f.split('/')
     components = f.split('_')
     protein = components[0]
     width = extract_width_int(components[7])
     core = components[8]
     kmers = components[9].replace('mer','').split('a')
     core_start = 8
-    return [protein, width, core, kmers, True, core_start, 'RUNX']
+    return [protein, width, core, kmers, True, core_start, family]
 
 models = list()
 for f in e2f_files.splitlines():
