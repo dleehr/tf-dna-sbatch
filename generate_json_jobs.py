@@ -36,10 +36,11 @@ def main(start_protein_number):
         protein_number = start_protein_number
         for protein_dict in ORDERED_PROTEINS_THRESHOLDS:
             protein = protein_dict['protein']
+            model_key = protein_dict['model_key']
             # One set of input files per model
             formatted_protein_number = '{0:04d}'.format(protein_number)
             input_file_paths = list()
-            models = [model for model in pgw.models if model[1] == protein]
+            models = [model for model in pgw.models if model[1] == model_key]
             for model in models:
                 model_filename = model[0]
                 base_model_filename = os.path.splitext(model_filename)[0]
