@@ -70,7 +70,7 @@ def parse_e2f(f):
     width = extract_width_int(components[7])
     core = components[8]
     kmers = components[9].replace('mer','').split('a')
-    return [protein, width, core, kmers, True, None]
+    return [protein, width, core, kmers, True, None, 'E2F']
 
 def parse_elkets(f):
     f = f.split('/')[1]
@@ -79,7 +79,7 @@ def parse_elkets(f):
     width = extract_width_int(components[6])
     core = components[7]
     kmers = components[8].replace('mer','').split('a')
-    return [protein, width, core, kmers, True, None]
+    return [protein, width, core, kmers, True, None, 'ETS']
 
 def parse_hismadmax(f):
     f = f.split('/')[1]
@@ -88,7 +88,7 @@ def parse_hismadmax(f):
     width = extract_width_int(components[5])
     core = components[6]
     kmers = components[7].replace('mer','').split('a')
-    return [protein, width, core, kmers, True, None]
+    return [protein, width, core, kmers, True, None, 'bHLH']
 
 def parse_hismax(f):
     f = f.split('/')[1]
@@ -97,7 +97,7 @@ def parse_hismax(f):
     width = extract_width_int(components[6])
     core = components[7]
     kmers = components[8].replace('mer','').split('a')
-    return [protein, width, core, kmers, True, None]
+    return [protein, width, core, kmers, True, None, 'bHLH']
 
 def parse_runx(f):
     f = f.split('/')[1]
@@ -107,7 +107,7 @@ def parse_runx(f):
     core = components[8]
     kmers = components[9].replace('mer','').split('a')
     core_start = 8
-    return [protein, width, core, kmers, True, core_start]
+    return [protein, width, core, kmers, True, core_start, 'RUNX']
 
 models = list()
 for f in e2f_files.splitlines():
@@ -163,6 +163,7 @@ if __name__ == '__main__':
     kmers_list = params[4]
     transform = params[5]
     core_start = params[6]
+    family = params[7]
 
     genome_file = '{}/{}.fa'.format(genome_files_dir, assembly)
     model_file = '{}/{}'.format(model_files_dir, model_filename)
