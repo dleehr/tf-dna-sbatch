@@ -1,0 +1,7 @@
+{
+  "output_bigbed_file_name": "hg38_0003_Max.bb", 
+  "assembly": "hg38", 
+  "intermediate_output_file_name": "hg38_0003_Max.bed", 
+  "filter_threshold": 0.2386, 
+  "input_files": []
+}

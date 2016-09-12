@@ -1,0 +1,7 @@
+{
+  "output_bigbed_file_name": "hg19_0006_Gabpa.bb", 
+  "assembly": "hg19", 
+  "intermediate_output_file_name": "hg19_0006_Gabpa.bed", 
+  "filter_threshold": 0.2888, 
+  "input_files": []
+}

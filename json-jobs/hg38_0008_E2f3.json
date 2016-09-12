@@ -1,0 +1,7 @@
+{
+  "output_bigbed_file_name": "hg38_0008_E2f3.bb", 
+  "assembly": "hg38", 
+  "intermediate_output_file_name": "hg38_0008_E2f3.bed", 
+  "filter_threshold": 0.2762, 
+  "input_files": []
+}

@@ -1,0 +1,7 @@
+{
+  "output_bigbed_file_name": "hg38_0001_c-Myc.bb", 
+  "assembly": "hg38", 
+  "intermediate_output_file_name": "hg38_0001_c-Myc.bed", 
+  "filter_threshold": 0.1619, 
+  "input_files": []
+}

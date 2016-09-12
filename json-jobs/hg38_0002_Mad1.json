@@ -1,0 +1,7 @@
+{
+  "output_bigbed_file_name": "hg38_0002_Mad1.bb", 
+  "assembly": "hg38", 
+  "intermediate_output_file_name": "hg38_0002_Mad1.bed", 
+  "filter_threshold": 0.1837, 
+  "input_files": []
+}
