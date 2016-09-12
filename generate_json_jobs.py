@@ -41,12 +41,12 @@ def main(start_protein_number):
             formatted_protein_number = '{0:04d}'.format(protein_number)
             input_file_paths = list()
             models = [model for model in pgw.models if model[1] == model_key]
+            bedfiles_dir = pgw.output_dir_name(pgw.output_base, assembly, model_key)
             for model in models:
                 model_filename = model[0]
                 base_model_filename = os.path.splitext(model_filename)[0]
-                output_dir = pgw.output_dir_name(pgw.output_base, assembly, protein)
                 for chrom in pgw.chroms:
-                    input_file_paths.append(pgw.output_file_name(output_dir, os.path.basename(model_filename), chrom))
+                    input_file_paths.append(pgw.output_file_name(bedfiles_dir, os.path.basename(model_filename), chrom))
             # Now we have a list of source filenames
             filter_threshold = FILTER_THRESHOLDS[protein]
             intermediate_output_file_name = '{}_{}_{}.bed'.format(assembly, formatted_protein_number, protein)
