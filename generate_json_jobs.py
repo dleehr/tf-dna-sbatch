@@ -17,6 +17,8 @@ ORDERED_PROTEINS_THRESHOLDS = [
 ]
 
 FILTER_THRESHOLDS = { x['protein']: x['filter_threshold'] for x in ORDERED_PROTEINS_THRESHOLDS }
+MODEL_KEYS = { x['protein']: x['model_key'] for x in  ORDERED_PROTEINS_THRESHOLDS }
+ORDERED_PROTEINS = [x['protein'] for x in ORDERED_PROTEINS_THRESHOLDS]
 
 def make_job_dict(input_file_paths, filter_threshold, assembly, intermediate_output_file_name, output_bigbed_file_name):
     job = dict()
