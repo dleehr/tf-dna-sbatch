@@ -2,6 +2,7 @@
 #
 #SBATCH --mail-user=dan.leehr@duke.edu
 #SBATCH --mail-type=FAIL
+#SBATCH --mem=16g
 
 module load Anaconda/2.1.0-fasrc01
 module load R/3.2.2-fasrc03
