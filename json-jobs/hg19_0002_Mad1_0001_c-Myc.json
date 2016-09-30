@@ -486,6 +486,7 @@
   "tf1_threshold": 0.1837, 
   "output_bigbed_file_name": "hg19_0002_Mad1_0001_c-Myc.bb", 
   "tf1": "Mad1", 
+  "intermediate_output_file_name": "hg19_0002_Mad1_0001_c-Myc.bed", 
   "tf1_bed_files": [
     {
       "path": "/data/sciencesupport/tf-dna-predictions/results/hg19/HisMadMax/HisMadMax_Bound_filtered_normalized_transformed_20bp_CACATG_1a2a3mer_format.model_chr1_predictions.bed", 

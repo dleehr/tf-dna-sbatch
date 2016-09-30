@@ -52,7 +52,7 @@ for assembly in genomes:
   for pair in PREFERENCE_PAIRS:
     proteins = pair['proteins']
     pair_base_filename = make_pair_base_filename(assembly, proteins)
-    job_dict = dict(assembly=assembly, output_bigbed_file_name=pair_base_filename + '.bb')
+    job_dict = dict(assembly=assembly, output_bigbed_file_name=pair_base_filename + '.bb', intermediate_output_file_name=pair_base_filename + '.bed')
     for idx, protein in enumerate(proteins):
       tf_key = 'tf' + str(idx + 1) # tf1, tf2
       thresh_key = tf_key + '_threshold'

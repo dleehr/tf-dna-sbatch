@@ -198,6 +198,7 @@
   "tf1_threshold": 0.2244, 
   "output_bigbed_file_name": "hg38_0004_Elk1_0005_Ets1.bb", 
   "tf1": "Elk1", 
+  "intermediate_output_file_name": "hg38_0004_Elk1_0005_Ets1.bed", 
   "tf1_bed_files": [
     {
       "path": "/data/sciencesupport/tf-dna-predictions/results/hg38/ELK1/ELK1_100nM_Bound_filtered_normalized_transformed_20bp_GGAA_1a2a3mer_format.model_chr1_predictions.bed", 
