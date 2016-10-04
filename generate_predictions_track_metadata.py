@@ -37,4 +37,4 @@ def write_yaml(file_name):
         f.write( yaml.dump(metadata_dicts, default_flow_style=False) )
 
 if __name__ == '__main__':
-    write_yaml('tracks.yaml')
+    write_yaml('tracks-predictions.yaml')
