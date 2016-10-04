@@ -19,11 +19,12 @@ def write_yaml(file_name):
             author_identifier = 'NS'
             track_filename = '{}_{}_{}.bb'.format(assembly, serial_number, protein)
             track_name = '{}_{}'.format(protein, serial_number)
-            width = int(model[2])
             cores = [model[3] for model in models]
             kmers = [int(x) for x in models[0][4]] #kmers must be consistent for all models on a protein
             slope_intercept = False
             # Assign to literal values so that yaml doesn't use references
+            model = models[0]
+            width = int(model[2])
             if model[4]:
               transform = True
             else:
