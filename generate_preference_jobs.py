@@ -45,7 +45,7 @@ def make_files_list(assembly, protein):
 def make_pair_base_filename(assembly, proteins):
   # hg19_0004_Elk1_0005_Ets1.bb
   protein_numbers = [get_protein_number(protein) for protein in proteins]
-  return '{}_{}_{}_{}_{}'.format(assembly, protein_numbers[0], proteins[0], protein_numbers[1], proteins[1])
+  return '{}_{}_{}_vs_{}_{}'.format(assembly, proteins[0], protein_numbers[0], proteins[1], protein_numbers[1])
 
 
 for assembly in genomes:
