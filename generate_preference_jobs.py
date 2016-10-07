@@ -11,9 +11,14 @@ from generate_json_jobs import FILTER_THRESHOLDS, MODEL_KEYS, ORDERED_PROTEINS
 # what are the pairs we want to run
 PREFERENCE_PAIRS = [
   {'family' : 'ETS', 'proteins': ('Elk1','Ets1',) },
+  {'family' : 'ETS', 'proteins': ('Elk1','Gabpa',) },
+  {'family' : 'ETS', 'proteins': ('Ets1','Gabpa',) },
   {'family': 'E2F', 'proteins': ('E2f1','E2f4',) },
   {'family': 'E2F', 'proteins': ('E2f1','E2f3',) },
+  {'family': 'E2F', 'proteins': ('E2f3','E2f4',) },
   {'family' : 'bHLH', 'proteins': ('Mad1','c-Myc') },
+  {'family' : 'bHLH', 'proteins': ('Mad1','Max') },
+  {'family' : 'bHLH', 'proteins': ('Max','c-Myc') },
   {'family' : 'RUNX', 'proteins': ('Runx1','Runx2') },
 ]
 
