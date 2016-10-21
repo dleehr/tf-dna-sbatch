@@ -19,10 +19,26 @@ def write_yaml(file_name):
         models = [model for model in pgw.models if model[1] == model_key]
         # models is a list of files and their decoded parameters.
         cores = [model[3] for model in models]
+        # These details don't vary from model file to model file, so we just use
+        # the details from the first.
         model = models[0]
         core_start = model[6]
         family = model[7]
-        metadata = dict(assembly=assembly, track_filename=track_filename, track_name=track_name,author_identifier=author_identifier, proteins=proteins, cores=cores, core_start=core_start, family=family, serial_numbers=serial_numbers, filter_thresholds=filter_thresholds)
+        width = int(model[2])
+        kmers = [int(x) for x in models[0][4]] #kmers must be consistent for all models on a protein
+        slope_intercept = False
+        if model[4]:
+          transform = True
+        else:
+          transform = False
+
+        # Fill in model filenames for both proteins
+        model_filenames = list()
+        for protein in proteins:
+          filenames = [os.path.basename(model[0]) for model in pgw.models if model[1] == MODEL_KEYS[protein]]
+          model_filenames.append(filenames)
+
+        metadata = dict(assembly=assembly, track_filename=track_filename, track_name=track_name,author_identifier=author_identifier, proteins=proteins, cores=cores, core_start=core_start, family=family, serial_numbers=serial_numbers, filter_thresholds=filter_thresholds, model_filenames=model_filenames, width=width, kmers=kmers, slope_intercept=slope_intercept, transform=transform)
         metadata_dicts.append(metadata)
     with open(file_name, 'w') as f:
         f.write( yaml.dump(metadata_dicts, default_flow_style=False) )
