@@ -12,7 +12,7 @@ def write_yaml(file_name):
         serial_numbers = [get_protein_number(p) for p in proteins]
         filter_thresholds = [FILTER_THRESHOLDS[p] for p in proteins]
         track_filename = make_pair_base_filename(assembly, proteins) + '.bb'
-        track_name = '{}_vs_{}'.format(proteins[0], proteins[1])
+        track_name = '{}_{}_vs_{}_{}'.format(proteins[0], serial_numbers[0], proteins[1], serial_numbers[1])
         author_identifier = 'NS'
         # Pull out the model details for the first protein
         model_key = MODEL_KEYS[proteins[0]]
